@@ -1,0 +1,15 @@
+{
+  "name": "sunny-proxy",
+  "description": "Simple cloud-based static web server using Sunny.js",
+  "version": "0.0.1",
+  "author": "Ryan Roemer <ryan@loose-bits.com>",
+  "url": "http://ryan-roemer.github.com/sunny-proxy",
+  "main": "server",
+  "engines": {
+    "node": ">=0.4.5"
+  },
+  "dependencies": {
+    "sunny": ">=0.0.1",
+    "mime": ">=1.2.4"
+  }
+}
