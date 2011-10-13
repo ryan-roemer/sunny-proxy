@@ -9,11 +9,11 @@
   var http = require('http'),
     mime = require('mime'),
     sunny = require('sunny'),
-    sunnyCfg = sunny.Configuration.fromEnv(), // Configuration.
+    sunnyCfg = sunny.Configuration.fromEnv(),       // Configuration.
     connection = sunnyCfg.connection,
-    ADDR = "127.0.0.1",                       // Server settings.
+    ADDR = "127.0.0.1",                             // Server settings.
     PORT = 2000,
-    CONTAINER = "sunny-proxy-demo",           // Serve this bucket.
+    CONTAINER = process.env.SUNNY_PROXY_CONTAINER,  // Serve this bucket.
     request;
 
   // Get our container and create server inside to get blobs.
