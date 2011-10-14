@@ -29,7 +29,7 @@ Then configure the following environment variables:
 You should now be able to run the server:
 
     $ node server.js
-    Server running at http://127.0.0.1:2000/
+    Server running at http://0.0.0.0:2000/
 
 ... and we're off!
 
