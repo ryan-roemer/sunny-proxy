@@ -9,15 +9,14 @@
   var http = require('http'),
     mime = require('mime'),
     sunny = require('sunny'),
-    sunnyCfg = sunny.Configuration.fromEnv(),       // Configuration.
-    connection = sunnyCfg.connection,
-    ADDR = process.env.ADDRESS || "0.0.0.0",        // Server settings.
+    conn = sunny.Configuration.fromEnv().connection,  // Configuration.
+    ADDR = process.env.ADDRESS || "0.0.0.0",          // Server settings.
     PORT = process.env.PORT || 2000,
-    CONTAINER = process.env.SUNNY_PROXY_CONTAINER,  // Serve this bucket.
+    CONTAINER = process.env.SUNNY_PROXY_CONTAINER,    // Serve this bucket.
     request;
 
   // Get our container and create server inside to get blobs.
-  request = connection.getContainer(CONTAINER, { validate: true });
+  request = conn.getContainer(CONTAINER, { validate: true });
   request.on('error', function (err) {
     console.log(err);
     throw err;
