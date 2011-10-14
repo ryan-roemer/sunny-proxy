@@ -11,7 +11,7 @@
     sunny = require('sunny'),
     sunnyCfg = sunny.Configuration.fromEnv(),       // Configuration.
     connection = sunnyCfg.connection,
-    ADDR = "127.0.0.1",                             // Server settings.
+    ADDR = process.env.ADDRESS || "0.0.0.0",        // Server settings.
     PORT = process.env.PORT || 2000,
     CONTAINER = process.env.SUNNY_PROXY_CONTAINER,  // Serve this bucket.
     request;
