@@ -12,7 +12,7 @@
     sunnyCfg = sunny.Configuration.fromEnv(),       // Configuration.
     connection = sunnyCfg.connection,
     ADDR = "127.0.0.1",                             // Server settings.
-    PORT = 2000,
+    PORT = process.env.PORT || 2000,
     CONTAINER = process.env.SUNNY_PROXY_CONTAINER,  // Serve this bucket.
     request;
 
