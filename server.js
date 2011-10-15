@@ -32,17 +32,16 @@
         res.writeHead(status, { 'content-type': mime.lookup(path) });
 
         // Get blob and pass through error or pipe stream to response.
-        stream = results.container.getBlob(path)
+        stream = results.container.getBlob(path);
+        stream.on('error', function (err) {
+          status = err.statusCode || 500;
+          res.writeHead(status, { 'content-type': "text/html" });
+          res.end("<h1>" + status + ": " + err.message + "</h1>");
+          logResult();
+        });
+        stream.on('end', logResult);
         stream.pipe(res);
-        stream
-          .on('error', function (err) {
-            status = err.statusCode || 500;
-            res.writeHead(status, { 'content-type': "text/html" });
-            res.end("<h1>" + status + ": " + err.message + "</h1>");
-            logResult();
-          })
-          .on('end', logResult)
-          .end();
+        stream.end();
       }).listen(PORT, ADDR);
       console.log("Server running at http://%s:%s/", ADDR, PORT);
     })
