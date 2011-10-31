@@ -1,16 +1,16 @@
 # Simple cloud proxy web server.
-http = require('http')
-mime = require('mime')
-sunny = require('sunny')
+http = require 'http'
+mime = require 'mime'
+sunny = require 'sunny'
 conn = sunny.Configuration.fromEnv().connection  # Configuration.
 ADDR = process.env.ADDRESS or "0.0.0.0"          # Server settings.
 PORT = process.env.PORT or 2000
 CONTAINER = process.env.SUNNY_PROXY_CONTAINER    # Serve this bucket.
 
 # Get our container and create server inside to get blobs.
-request = conn.getContainer(CONTAINER, { validate: true })
+request = conn.getContainer CONTAINER, { validate: true }
 request.on 'error', (err) ->
-  console.log(err)
+  console.log err
   throw err
 
 request.on 'end', (results) ->
@@ -21,7 +21,7 @@ request.on 'end', (results) ->
     logResult = () -> console.log "[%s] %s", status, path
 
     # Header based on MIME type (re-write on error).
-    res.writeHead(status, { 'content-type': mime.lookup(path) })
+    res.writeHead status, { 'content-type': mime.lookup path }
 
     # Get blob and pass through error or pipe stream to response.
     stream = results.container.getBlob path
