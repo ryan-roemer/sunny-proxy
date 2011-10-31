@@ -31,6 +31,13 @@ You should now be able to run the server:
     $ node server.js
     Server running at http://0.0.0.0:2000/
 
+Or, if you are feeling
+[CoffeeScript](http://jashkenas.github.com/coffee-script/) inclined, try:
+
+    $ coffee server.coffee
+    Server running at http://0.0.0.0:2000/
+
 ... and we're off!
 
-Open a browser to http://127.0.0.1:2000/ and 
+Open a browser to http://127.0.0.1:2000/ and you should be able to browse files
+according to the directory hierarchy with which they were uploaded.
